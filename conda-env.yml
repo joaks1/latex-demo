@@ -3,4 +3,4 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - texlive-core
+  - tectonic
