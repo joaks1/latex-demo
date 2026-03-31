@@ -1,0 +1,6 @@
+name: latex-demo
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - texlive-core
