@@ -99,7 +99,7 @@ If you don't have `conda` on your computer.
 Here is some info about conda and instructions for installing conda-forge from
 a scripting class that I teach:
 
--   [Conda installation](https://phyletica.org/teaching/s4b/setup/#4-conda-package-manager)
+-   [Conda-forge installation](https://phyletica.org/teaching/s4b/setup/#4-conda-package-manager)
 
 I prefer to use micromamba, which works identically to conda. Here are
 instructions for installing micromamba
