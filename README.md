@@ -34,8 +34,15 @@ If you have Git installed, the easiest way to get the files for the LaTeX demo
 is to use the following command:
 
     git clone https://github.com/joaks1/latex-demo.git
+    cd latex-demo
 
-If you don't have Git, you can use the instructions below to install it.
+If you don't have Git,
+here are some instructions to install it from a scripting class I teach (this is
+optional; see below):
+
+-   [Install Git](https://phyletica.org/teaching/s4b/setup/#2-git)
+
+
 Alternatively, if you prefer not to use `git`, you can use `wget` or `curl`
 from the command line to download the files in this repo.
 To use `wget`:
@@ -45,6 +52,12 @@ To use `wget`:
 To use `curl`:
 
     curl -L -O https://github.com/joaks1/latex-demo/archive/main.zip
+
+After using one of the commands above, you should have `main.zip` downloaded.
+Unzip `main.zip` and `cd` into the new `latex-demo-main` directory:
+
+    unzip main.zip
+    cd latex-demo-main
 
 ## Accessing LaTeX, Option 1: Use Overleaf
 
@@ -59,27 +72,42 @@ click "New project" and then "Blank project".
 After your new project is created, you can use the up-arrow-upload button to
 upload the `manuscript.tex` document from this repo that you downloaded above.
 
-## Accessing LaTeX, Option 2: Using Conda
-
-### Installing Conda
+## Accessing LaTeX, Option 2: Tectonic
 
 If you want to follow along with this demo locally (*i.e.*, not on Overleaf),
-the easiest way to LaTeX up and running on your computer is to create a `conda`
-environment with the `texlive-core` package installed.
+There are several options for installing a LaTeX typesetting system.
+The "traditional" options include:
 
+-   Installing [TexLive](https://www.tug.org/texlive/) for Linux users (or Windows too)
+-   Installing [MikTex](https://miktex.org/) for Windows users
+-   Installing [MacTex](https://www.tug.org/mactex/) for Mac users
+
+[Tectonic](https://tectonic-typesetting.github.io) is a newer way that attempts
+to make LaTeX easier to install and use..
+Below, I describe how to either install Tectonic directly, or use it via a
+Conda environment.
+
+### Installing Tectonic directly
+
+Go to the [Tectonic website](https://tectonic-typesetting.github.io) and
+click the "Install" tab for instructions for how to install Tectonic on your
+computer.
+
+### Using Tectonic via Conda
+
+If you don't have `conda` on your computer.
 Here is some info about conda and instructions for installing conda-forge from
 a scripting class that I teach:
 
 -   [Conda installation](https://phyletica.org/teaching/s4b/setup/#4-conda-package-manager)
 
-I prefer to use micromamba, which works identically to conda.
-Here are instructions for intalling micromamba:
+I prefer to use micromamba, which works identically to conda. Here are
+instructions for installing micromamba
+(NOTE: Either conda-forge or micromamba are great; you don't need both):
 
 -   [Installing micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html)
 
-### Creating the conda environment
-
-Once you have conda installed, open a terminal window and navigate to
+Once you have conda (or micromamba) installed, open a terminal window and navigate to
 `latex-demo` directory, for example:
     
     cd latex-demo
@@ -101,12 +129,23 @@ with the following command (again, if you're using micromamba, just replace
 You should now have access to all the tools you need to compile LaTeX
 documents.
 
-### Installing Git (optional)
+# The demo
 
-If you want to be able to clone this repo, you will need to have Git installed.
-Here are some Git installation insructions from a scripting class I teach:
+In this (`latex-demo`) directory, you will find a document called `manuscript.tex`.
+This is the simplest possible LaTeX document.
+Open `manuscript.tex` with your preferred text editor.
+It should look like:
 
--   [Install Git](https://phyletica.org/teaching/s4b/setup/#2-git)
+```latex
+\documentclass{article}
+
+\begin{document}
+
+Hello, World!
+This is my first \LaTeX{} document!
+
+\end{document}
+```
 
 # Other resources
 
