@@ -1,3 +1,31 @@
+# What is LaTeX?
+
+[LaTeX](https://www.latex-project.org/)
+is a markup language and document preparation system, used for typesetting
+technical, scientific, and academic documents.
+Unlike
+What-You-See-Is-What-You-Get (WYSIWYG) editors, like Microsoft Word),
+LaTeX separates content from formatting, allowing you to focus on writing
+content while LaTeX handles complex formatting, mathematical formulas, and
+bibliographies separately.
+
+# Newer alternatives to LaTeX
+
+The origins of LaTeX go all the way back to 1978, when computer scientist,
+[Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth),
+first released TeX.
+It's great, and I suspect it will continue to be used extensively for technical
+and academic typesetting for many years to come.
+But, there are some modern alternatives, like:
+
+-   [Quarto](https://quarto.org/)
+-   [Typst](https://typst.app/)
+-   [Pandoc](https://pandoc.org/); Quarto is built on Pandoc
+
+Personally, when starting new projects, I'm going to tryout Quarto.
+Nonetheless, there's a good chance you will collaborate on projects that use
+LaTeX, so let's learn the basics.
+
 # Getting set up
 
 ## Get the files in this repo
@@ -6,6 +34,17 @@ If you have Git installed, the easiest way to get the files for the LaTeX demo
 is to use the following command:
 
     git clone https://github.com/joaks1/latex-demo.git
+
+If you don't have Git, you can use the instructions below to install it.
+Alternatively, if you prefer not to use `git`, you can use `wget` or `curl`
+from the command line to download the files in this repo.
+To use `wget`:
+
+    wget https://github.com/joaks1/latex-demo/archive/main.zip
+
+To use `curl`:
+
+    curl -L -O https://github.com/joaks1/latex-demo/archive/main.zip
 
 ## Accessing LaTeX, Option 1: Use Overleaf
 
@@ -16,6 +55,9 @@ Try this link to learn more:
 
 Once your account is setup and your on the landing page for your Overleaf account,
 click "New project" and then "Blank project".
+
+After your new project is created, you can use the up-arrow-upload button to
+upload the `manuscript.tex` document from this repo that you downloaded above.
 
 ## Accessing LaTeX, Option 2: Using Conda
 
