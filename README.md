@@ -321,7 +321,7 @@ This is my \textbf{first} \LaTeX{} document!
 I'm adding a \textit{third} sentence to the first paragraph.
 
 % A thought I want to remember, but not appear in the document
-This should be the \textbf{\textit{first}} sentence of a new paragraph.
+This should be the \textbf{\textit{first}} sentence of a new ``paragraph''.
 
 A third paragraph with the famous $E = mc^2$ equation.
 
@@ -340,18 +340,42 @@ This is my \textbf{first} \LaTeX{} document!
 I'm adding a \textit{third} sentence to the first paragraph.
 
 % A thought I want to remember, but not appear in the document
-This should be the \textbf{\textit{first}} sentence of a new paragraph.
+This should be the \textbf{\textit{first}} sentence of a new ``paragraph''.
 
 A third paragraph with the famous $E = mc^2$ equation.
 When pondering
 \begin{equation}
 p(A | B) = \frac{ p(B | A) p(A) }{ p(B) },
 \end{equation}
-it's clear that science is a practice of conditional probabilities.
+it's clear that science is an exercise in conditional probabilities.
 
 \end{document}
 ```
 
+Compile, and you should have a nice, numbered equation.
+
+## Labels and references
+
+Another strength of LaTeX is how easy it is to label things and refer back to
+them.
+For example, let's label our equation from above, and refer back to it:
+
+```latex
+When pondering
+\begin{equation}
+    p(A | B) = \frac{ p(B | A) p(A) }{ p(B) },
+    \label{eq:bayesrule}
+\end{equation}
+it's clear that science is an exercise in conditional probabilities.
+
+Another paragraph where we refer to Equation \ref{eq:bayesrule}.
+
+\end{document}
+```
+
+This is brilliant, because if we change the order of anything we label
+(equations, figures, tables, etc.), we don't have to go back and change all our
+references to them!
 
 ## Adding a title
 
@@ -373,7 +397,17 @@ This is my \textbf{first} \LaTeX{} document!
 I'm adding a \textit{third} sentence to the first paragraph.
 
 % A thought I want to remember, but not appear in the document
-This should be the \textbf{\textit{first}} sentence of a new paragraph.
+This should be the \textbf{\textit{first}} sentence of a new ``paragraph''.
+
+A third paragraph with the famous $E = mc^2$ equation.
+When pondering
+\begin{equation}
+    p(A | B) = \frac{ p(B | A) p(A) }{ p(B) },
+    \label{eq:bayesrule}
+\end{equation}
+it's clear that science is an exercise in conditional probabilities.
+
+Another paragraph where we refer to Equation \ref{eq:bayesrule}.
 
 \end{document}
 ```
@@ -427,7 +461,104 @@ determine how the affiliations are assigned to the authors.
 ## Adding images
 
 Next, let's add a figure to our doc.
+First, we need to specify that we want to use the `graphicx` package in our
+preamble:
 
+```latex
+\documentclass{article}
+\usepackage{authblk}
+\usepackage{graphicx}
+```
+
+Then in the body of our text, we can add a figure:
+
+```latex
+Hello,                 World!  % An end of line comment
+This is my \textbf{first} \LaTeX{} document!
+I'm adding a \textit{third} sentence to the first paragraph.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/kalophrynus.jpg}
+    \caption{A cute frog.}
+    \label{fig:frog}
+\end{figure}
+
+Adding a cute frog in Figure \ref{fig:frog}.
+
+% A thought I want to remember, but not appear in the document
+This should be the \textbf{\textit{first}} sentence of a new ``paragraph''.
+```
+
+Note, we are using `\label` and `\ref` again to enable us to refer to the
+figure.
+
+## Citations and bibliographies
+
+There are a few options for managing bibliographies in LaTeX, like bibtex,
+natbib, and biblatex.
+They all use bibliographic data in the same `.bib` format, and all are used the
+same in the body of the text.
+The main difference is how you set things up in the preamble.
+Let's try out biblatex below.
+
+First, create a new file called `references.bib` and copy and paste the
+following text into it:
+
+    @article{Einstein1905,
+        author = {Einstein, Albert},
+        title = {Ist die Tr\"agheit eines K\"orpers von seinem Energieinhalt abh\"angig?},
+        journal = {Annalen der Physik},
+        volume = {323},
+        number = {13},
+        pages = {639--641},
+        doi = {10.1002/andp.19053231314},
+        url = {https://doi.org/10.1002/andp.19053231314},
+        year = {1905},
+    }
+    
+    @article{BayesRule,
+        author = {Bayes, Thomas},
+        title = {
+            {LII}. An essay towards solving a problem in the doctrine of
+            chances. By the late {R}ev.\ {M}r.\ {B}ayes, {F}.\ {R}.\ {S}.\
+            communicated by {M}r.\ {P}rice, in a letter to {J}ohn {C}anton,
+            {A}.\ {M}.\ {F}.\ {R}.\ {S}
+        },
+        journal = {Philosophical Transactions},
+        number = {53},
+        pages = {370--418},
+        year = {1763},
+        month = {12},
+        doi = {10.1098/rstl.1763.0053},
+        url = {https://doi.org/10.1098/rstl.1763.0053},
+    }
+
+Next, add two lines to our preamble:
+
+```latex
+\documentclass{article}
+\usepackage{authblk}
+\usepackage{graphicx}
+\usepackage{natbib}
+\bibliographystyle{unsrtnat}
+```
+
+Then, we can add some citations in our text and a bibliography at the end:
+
+```latex
+A third paragraph with the famous $E = mc^2$ equation \cite{Einstein1905}.
+When pondering Bayes' \cite{BayesRule}
+\begin{equation}
+    p(A | B) = \frac{ p(B | A) p(A) }{ p(B) },
+    \label{eq:bayesrule}
+\end{equation}
+it's clear that science is an exercise in conditional probabilities.
+
+Another paragraph where we refer to Equation \ref{eq:bayesrule}.
+
+\bibliography{references}
+```
 
 
 # Other resources
