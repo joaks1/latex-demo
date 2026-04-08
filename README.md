@@ -650,7 +650,6 @@ To use them you will need to add `\usepackage{xcolor}` to the preamble.
 \newcommand{\super}[1]{\ensuremath{^{\textrm{#1}}}}
 \newcommand{\sub}[1]{\ensuremath{_{\textrm{#1}}}}
 \newcommand{\dC}{\ensuremath{^\circ{\textrm{C}}}}
-\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \newcommand{\eg}{\textit{e.g.}\xspace}
 \newcommand{\eeg}{\textit{E.g.}\xspace}
 \newcommand{\ie}{\textit{i.e.}\xspace}
