@@ -560,6 +560,123 @@ Another paragraph where we refer to Equation \ref{eq:bayesrule}.
 \bibliography{references}
 ```
 
+After compiling, you should see in-text citations and a bibliography at the end
+of our document.
+
+
+## Macros
+
+Above, we've been using macros (AKA commands), like `\ref{...}`, `\label{...}`,
+and `\cite{...}`.
+Another big strength of LaTeX is how easy it is to create our own macros.
+For example, let's create some macros to make Bayes' a bit more intuitive when
+reading it in the plain text LaTeX code.
+To do this, add the following lines to the preamble in `manuscript.tex`
+(*e.g.*, right after the line with `\bibliographystyle{unsrtnat}`):
+
+```latex
+\usepackage{xspace}
+
+\newcommand{\model}{\ensuremath{M}\xspace}
+\newcommand{\data}{\ensuremath{D}\xspace}
+\newcommand{\prob}{\ensuremath{p}\xspace}
+```
+
+The xspace package is useful when creating new macros that don't take any arguments.
+For example, it allows us to use our new `\model` macro without needing to have
+empty curly braces at the end (*i.e.*, `\model{}`).
+The curly braces are where arguments to the macro go, but since the macros we
+defined above don't have any arguments, the curly braces would be empty.
+Without `\xspace` at the end of our macro definition or the empty curly braces,
+you end up odd spacing in the PDF after the macros are used.
+
+Now that we've defined these new macros, let's update our Bayes' rule equation
+to put them to use:
+
+```latex
+\begin{equation}
+    \prob( \model | \data ) =
+    \frac{
+        \prob( \data | \model ) \prob( \model ) 
+    }{
+        \prob( \data )
+    },
+    \label{eq:bayesrule}
+\end{equation}
+```
+
+After compiling, you should see the "A"s and "B"s in Equation 1 change to "M"s
+and "D"s.
+Have you ever read a paper with a lot of mathematical notation and wondered how
+on Earth the authors kept track of which symbol means what?
+They probably didn't!
+They probably just defined macros so they could type out their equations in a
+more natural language.
+
+A huge advantage of this is, if we use `\data` a lot in our manuscript and
+later decide we want to represent it as X rather than D, we only need to make
+that change in our macro and, voila, the whole document will be updated!
+Use macros whenever you use word, symbol, etc. many times that might change!
+
+Now, let's add a macro that takes an argument.
+Let's add one more line that defines a `\spp{...}` macro for typesetting
+scientific names of species:
+
+```latex
+\newcommand{\model}{\ensuremath{M}\xspace}
+\newcommand{\data}{\ensuremath{D}\xspace}
+\newcommand{\prob}{\ensuremath{p}\xspace}
+\newcommand{\spp}[1]{\textit{#1}}
+```
+
+Then, we can add the following line to the content of our document:
+
+```latex
+I am a \spp{Homo sapiens}.
+```
+
+and compile `manuscript.tex` again.
+
+Here are some more examples of macros I use frequently.
+Note, some of them use the `\textcolor` macro that require a color package,
+like xcolor.
+To use them you will need to add `\usepackage{xcolor}` to the preamble.
+
+```latex
+\newcommand{\datasets}{data sets\xspace}
+\newcommand{\dataset}{data set\xspace}
+\newcommand{\citationNeeded}{\textcolor{magenta}{\textbf{[CITATION NEEDED!]}}\xspace}
+\newcommand{\thought}[1]{\textcolor{green}{[THOUGHT: #1]}}
+\newcommand{\super}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\sub}[1]{\ensuremath{_{\textrm{#1}}}}
+\newcommand{\dC}{\ensuremath{^\circ{\textrm{C}}}}
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+\newcommand{\eg}{\textit{e.g.}\xspace}
+\newcommand{\eeg}{\textit{E.g.}\xspace}
+\newcommand{\ie}{\textit{i.e.}\xspace}
+\newcommand{\iie}{\textit{I.e.}\xspace}
+```
+
+The `\dataset` and `\datasets` macros may seem silly, but I often dither
+about whether data set is one or two words.
+So, by using the macros, I can change between the two by simply updating these
+two macros.
+
+## Odds and ends
+
+### Escaping extra spaces after periods
+
+By default, when LaTeX "sees" a period followed by a space, it will assume this
+is the end of a sentence and insert extra space.
+However, we often use periods for initials and abbreviations, and we don't want
+the extra space after these.
+
+For example, if we type `Dr. Strangelove` in the body of our LaTex document,
+we'll get extra space between these words that we don't want.
+To solve this we can insert a backslash right after the period to specify that
+we want a normal space between these words:
+`Dr.\ Strangelove`
+
 
 # Other resources
 
